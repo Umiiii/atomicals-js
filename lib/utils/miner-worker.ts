@@ -122,7 +122,7 @@ if (parentPort) {
             value: getOutputValueForCommit(fees),
         };
         let finalCopyData, finalPrelimTx, finalSequence;
-        let startTime = Date.now();
+        var startTime = Date.now();
         // Start mining loop, terminates when a valid proof of work is found or stopped manually
         do {
             // Introduce a minor delay to avoid overloading the CPU
@@ -133,12 +133,15 @@ if (parentPort) {
                 finalSequence = -1;
             }
             if (sequence % 10000 == 0) {
+                let endTime = Date.now();
                 console.log(
                     "Started mining for sequence: " +
                         sequence +
                         " - " +
                         Math.min(sequence + 10000, MAX_SEQUENCE)
                 );
+                console.log("Miner Speed (hashes/s): " + 10000 / (endTime - startTime) * 1000);
+                startTime = endTime;
             }
 
             // Create a new PSBT (Partially Signed Bitcoin Transaction)
@@ -198,13 +201,6 @@ if (parentPort) {
 
             sequence++;
         } while (workerPerformBitworkForCommitTx);
-        let endTime = Date.now();
-        console.log(
-            "Mining took " +
-                (endTime - startTime) / 1000 +
-                " seconds for sequence: " +
-                sequence + " | Speed (tx/sec): " + (sequence / ((endTime - startTime) / 1000))
-        );
         if (finalSequence && finalSequence != -1) {
             // send a result or message back to the main thread
             console.log(
