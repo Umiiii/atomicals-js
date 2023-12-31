@@ -15,7 +15,7 @@ import { detectScriptToAddressType } from "./address-helpers";
 import { ATOMICALS_PROTOCOL_ENVELOPE_ID } from '../types/protocol-tags';
 import { BASE_REQUEST_OPTS_DEFAULTS, BaseRequestOptions } from '../interfaces/api.interface';
 import * as CrockfordBase32 from 'crockford-base32';
-import {fetchFastestFee, getFastestFee} from "./estimate-fee";
+import {getFastestFee} from "./estimate-fee";
 const mintnft = 'nft';
 const mintft = 'ft';
 const mintdft = 'dft';
