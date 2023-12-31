@@ -6,7 +6,7 @@ export const getFastestFee = () => {
     });
 
     return fees.getFeesRecommended().then(feesRecommended => {
-        console.log("fastest fee from mempool", feesRecommended.fastestFee);
+        //console.log("fastest fee from mempool", feesRecommended.fastestFee);
         return feesRecommended.fastestFee; // Return the fastestFee value
     }).catch(error => {
         // handle error

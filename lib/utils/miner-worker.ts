@@ -122,7 +122,7 @@ if (parentPort) {
             value: getOutputValueForCommit(fees),
         };
         let finalCopyData, finalPrelimTx, finalSequence;
-
+        let startTime = Date.now();
         // Start mining loop, terminates when a valid proof of work is found or stopped manually
         do {
             // Introduce a minor delay to avoid overloading the CPU
@@ -198,7 +198,13 @@ if (parentPort) {
 
             sequence++;
         } while (workerPerformBitworkForCommitTx);
-
+        let endTime = Date.now();
+        console.log(
+            "Mining took " +
+                (endTime - startTime) / 1000 +
+                " seconds for sequence: " +
+                sequence + " | Speed (tx/sec): " + (sequence / ((endTime - startTime) / 1000))
+        );
         if (finalSequence && finalSequence != -1) {
             // send a result or message back to the main thread
             console.log(
