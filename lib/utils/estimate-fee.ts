@@ -15,7 +15,7 @@ export const getFastestFee = () => {
     });
 };
 
-(async () => {
-    const fastestFee = await getFastestFee();
-    console.log(fastestFee); // This will log the value of fastestFee
-})();
+// (async () => {
+//     const fastestFee = await getFastestFee();
+//     console.log(fastestFee); // This will log the value of fastestFee
+// })();

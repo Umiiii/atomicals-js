@@ -132,15 +132,15 @@ if (parentPort) {
             if (sequence > seqEnd) {
                 finalSequence = -1;
             }
-            if (sequence % 10000 == 0) {
+            if (sequence % 100000 == 0) {
                 let endTime = Date.now();
-                console.log(
-                    "Started mining for sequence: " +
-                        sequence +
-                        " - " +
-                        Math.min(sequence + 10000, MAX_SEQUENCE)
-                );
-                console.log("Miner Speed (hashes/s): " + 10000 / (endTime - startTime) * 1000);
+                // console.log(
+                //     "Started mining for sequence: " +
+                //         sequence +
+                //         " - " +
+                //         Math.min(sequence + 10000, MAX_SEQUENCE)
+                // );
+                console.log("Miner Speed (hashes/s): " + 100000 / (endTime - startTime) * 1000);
                 startTime = endTime;
             }
 
